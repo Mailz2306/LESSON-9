@@ -90,7 +90,7 @@ int SumNumber(int number)
 число А в целую степень B с помощью рекурсии.
 A = 3; B = 5 -> 243 (35) A = 2; B = 3 -> 8
 
-*/
+
 int a = DataInput();
 int b = DataInput();
 int sum = DegreeNumber(a,b);
@@ -112,4 +112,78 @@ int DataInput()
     int a = int.Parse(Console.ReadLine());
     return a; 
 }
+КОНЕЦ СЕМИНАРА
+_____________________________________________________ 
+ДОМАШНЕЕ ЗАДАНИЕ 
+
+Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа 
+в промежутке от N до 1. Выполнить с помощью рекурсии.
+N = 5 -> "5, 4, 3, 2, 1"
+N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
+
+РЕШЕНИЕ:
+
+Console.WriteLine("Введите число и я выведу все натуральные числа от 1 до этого числа:");
+int number = int.Parse(Console.ReadLine());
+
+void CountOfNumbers (int number)
+{
+    if (number < 0) Console.Write($"{number} не натуральное число");
+    if (number == 0) return;
+    Console.Write("{0,4}", number);
+    CountOfNumbers (number - 1);
+}
+
+CountOfNumbers(number);
+____________________________________________ 
+
+Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+
+M = 1; N = 15 -> 120
+M = 4; N = 8. -> 30
+
+РЕШЕНИЕ: 
+
+
+Console.WriteLine("Я могу посчитать сумму натуральных элементов в промежутке от M до N");
+Console.WriteLine("Введите первое число M:");
+int numberM = int.Parse(Console.ReadLine());
+
+Console.WriteLine("Введите второе число N:");
+int numberN = int.Parse(Console.ReadLine());
+
+void NaturNumberSum (int numberM, int numberN, int sum)
+{
+    if (numberM > numberN) 
+    {
+        Console.WriteLine($"Сумма натуральных элементов равна {sum}"); 
+        return;
+    }
+    sum = sum + (numberM++);
+    NaturNumberSum(numberM, numberN, sum);
+}
+
+NaturNumberSum(numberM, numberN, 0);
+
+Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+m = 2, n = 3 -> A(m,n) = 9
+m = 3, n = 2 -> A(m,n) = 29
+
+РЕШЕНИЕ: 
+*/ 
+Console.WriteLine("Я могу высчитать функцию Аккермана двух чисел.");
+Console.Write("Введите число m: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число n: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+int akkerman(int m, int n)
+{
+if (m == 0) return n + 1;
+else if (n == 0) return akkerman(m - 1, 1);
+else return akkerman(m - 1, akkerman(m, n - 1));
+}
+
+Console.Write($"Функция Аккермана равно {akkerman(m, n)} ");
+
 
